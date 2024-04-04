@@ -1,4 +1,4 @@
-package ac1.aluno.controller;
+package ac1.aluno.model;
 
 public class Aluno {
     private Long id;
