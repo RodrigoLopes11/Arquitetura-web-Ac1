@@ -25,7 +25,7 @@ public class alunoController {
         return aluno;
     }
 
-      @GetMapping
+    @GetMapping
     public List<Aluno> obterAlunos() {
         alunos.add(new Aluno(1L, "Rodrigo", "123", "ADS", "rodrigo@gmail.com", "(15)98824-8690"));
         alunos.add(new Aluno(2L, "Guilherme", "456", "Veterinaria", "guilherme@gmail.com", "(15)95688-4568"));
