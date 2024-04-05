@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,28 +25,20 @@ public class alunoController {
         return aluno;
     }
 
-    @GetMapping
+      @GetMapping
     public List<Aluno> obterAlunos() {
+        alunos.add(new Aluno(1L, "Rodrigo", "123", "ADS", "rodrigo@gmail.com", "(15)98824-8690"));
+        alunos.add(new Aluno(2L, "Guilherme", "456", "Veterinaria", "guilherme@gmail.com", "(15)95688-4568"));
+        alunos.add(new Aluno(3L, "Marcus", "789", "Biomedicina", "marcus@gmail.com", "(15)96658-3695"));
         return alunos;
     }
-
-    @PutMapping("/{id}")
-    public Aluno atualizarAluno(@PathVariable Long id, @RequestBody Aluno alunoAtualizado) {
+    @GetMapping("/{id}")
+    public Aluno obterAluno(@PathVariable Long id) {
         for (Aluno aluno : alunos) {
             if (aluno.getId().equals(id)) {
-                aluno.setNome(alunoAtualizado.getNome());
-                aluno.setMatricula(alunoAtualizado.getMatricula());
-                aluno.setCurso(alunoAtualizado.getCurso());
-                aluno.setEmail(alunoAtualizado.getEmail());
-                aluno.setTelefone(alunoAtualizado.getTelefone());
                 return aluno;
             }
         }
         return null;
-    }
-
-    @DeleteMapping("/{id}")
-    public void deletarAluno(@PathVariable Long id) {
-        alunos.removeIf(aluno -> aluno.getId().equals(id));
     }
 }
